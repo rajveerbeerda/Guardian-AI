@@ -2,6 +2,11 @@
 
 ### Development
 
+- Clone the repository to your local.
+```bash
+git clone https://github.com/rajveerbeerda/Home-Buying.git
+```
+
 - Install virtualEnv so you can isolate Python environments.
 ```bash
 sudo pip3 install virtualenv
