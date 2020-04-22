@@ -39,21 +39,14 @@ def guest():
         gd.gender = request.form["gender"]
         gd.businessman = request.form["businessman"]
         gd.location = request.form["location"]
-        print(gd.age)
-        return redirect(url_for('analysis', city_name=gd.location))
+        return redirect(url_for('crimeDetails', city_name=gd.location, age = gd.age, gender=gd.gender, businessman=gd.businessman))
     return render_template('guest.html', locations = locations)
 
-@app.route('/analysis/<city_name>', methods=['GET', 'POST'])
-def analysis(city_name):
-    return redirect(url_for('crimeDetails', city_name=city_name))
-
-@app.route('/crime-details/<city_name>', methods=['GET', 'POST'])
-def crimeDetails(city_name):
+@app.route('/crime-details/area-<city_name>&age-<age>&gender-<gender>&businessman-<businessman>', methods=['GET', 'POST'])
+def crimeDetails(city_name, age, gender, businessman):
     location = city_name
     df = pd.read_csv('data/area.csv')
     df = df[df['location']==location]
-
-    print(list(df))
 
     school_count = df['#_schools'].iloc[0]
     park_count = df['#_parks'].iloc[0]
@@ -69,9 +62,9 @@ def crimeDetails(city_name):
 
     if int(df['safety_index'])!=(-1):
         crimes_reported = 1
-        age = gd.age
-        gender = gd.gender
-        businessman = gd.businessman
+        age = age
+        gender = gender
+        businessman = businessman
 
         if request.method=="POST":
             if request.form['distance'] == '2.5km':
@@ -81,9 +74,12 @@ def crimeDetails(city_name):
             elif request.form['distance'] == '10km':
                 ov.distance = 10
 
-            return redirect(url_for('safeAreas', city_name=city_name))
+            return redirect(url_for('safeAreas', city_name=city_name, distance=ov.distance))
 
         news, crime_count, crime_ages, no_businessman, crimes, age_crimes, most_occ_crime, s = getData(location, int(age))
+        if int(age)==0:
+            crime_ages = -1
+
         si = safetyIndex(location)
         if si==0:
             si = 1
@@ -117,10 +113,10 @@ def crimeDetails(city_name):
                             most_occ_crime=most_occ_crime, s=s, si=si,
                             school_r=school_r, restaurant_r=restaurant_r, park_r=park_r, hospital_r=hospital_r)
 
-@app.route('/safe-areas/<city_name>', methods=['GET', 'POST'])
-def safeAreas(city_name):
+@app.route('/safe-areas/area-<city_name>&distance-<distance>', methods=['GET', 'POST'])
+def safeAreas(city_name, distance):
     src_loc = city_name
-    dist = ov.distance
+    dist = float(distance)
     safe_areas_lst, crime_area = getSafeLocations(src_loc, dist)
 
     return render_template('safe-areas.html', safe_areas_lst=safe_areas_lst, crime_area=crime_area, l=len(safe_areas_lst), src_loc=src_loc)
