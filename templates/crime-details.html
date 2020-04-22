@@ -195,10 +195,6 @@
     .pie-wrapper--solid .label {
         background: transparent;
     }
-    .column {
-        float: right;
-        width: 25%;
-      }
 </style>
 
 {% include 'includes/_navbar.html' %}
@@ -214,7 +210,9 @@
                         <div style="padding: 10px">
                             <h5>Crime occurring most frequently: {{ most_occ_crime }}</h5>
                             <p>
-                                No. of Crimes targeting your age-group: {{ crime_ages }}<br>
+                                {% if crime_ages>0 %}
+                                    No. of Crimes targeting your age-group: {{ crime_ages }}<br>
+                                {% endif %}
 
                                 Crimes reported in your area in past 3-months: {{ crime_count }}<br>
 
