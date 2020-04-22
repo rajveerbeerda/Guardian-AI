@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block metatags %}
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+{% endblock %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block body %}
+
+{% include 'includes/_navbar.html' %}
+
+<div class="section" style="padding-top: 100px;">
+    <div class="container" style="border-radius: 10px; padding-top: 40px">
+        <div class="row">
+            <div class="mcp-title-area">
+                <h2>Account Login</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mcp-area">
+                <form id="sign-in" method="post">
+                        <input size="62" placeholder="Email address" type="email" tabindex="1" id="email" name="email" oninvalid="this.setCustomValidity('Please enter a valid email address')" oninput="this.setCustomValidity('')" required autofocus>
+                        <input placeholder="Password" type="password" tabindex="1" id="password" name="password" oninvalid="this.setCustomValidity('Please enter your password')" required>
+                        <!-- <label class="mindhug_validation">
+                            <input type="checkbox" class="mindhug-checkmark" id="field_terms" oninvalid="this.setCustomValidity('Please check the box to continue')" oninput="this.setCustomValidity('')" required/>
+                            <span class="mindhug-checkmark"></span>
+                            <span class="validation-text">I agree to MindHug’s <a href="/privacy-policy" target="_blank" class="footer_link">Privacy Policy</a> and <a href = "/cookie-policy" target="_blank" class="footer_link">Cookie Policy</a>.</span>
+                        </label> -->
+                        <button name="submit" type="submit" id="submit" tabindex="5">Submit</button>
+                </form>
+                <p class="description" style="padding-top: 10px;">Don't have an account? <a href="sign-up">Click here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,141 @@
+{% extends 'layout.html' %}
+
+{% block metatags %}
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+{% endblock %}
+
+{% block title %}AI Home Buying{% endblock %}
+
+<body>
+
+{% block body %}
+
+<div class="top_container">
+
+    {% include 'includes/_navbar.html' %}
+
+    <section class="hero_section " style="padding-top: 100px;">
+      <div class="hero-container container">
+        <div class="hero_detail-box">
+          <h1>
+            Choosing a safe neighborhood has never been easier.
+          </h1>
+          <p>
+            By analyzing thousands of crime reports from news articles, and using our proprietary AI technology, we tell you: how safe a locality is, for YOU!
+          </p>
+          <div class="hero_btn-continer">
+              <div class="row" style="justify-content: center">
+                <div class="column" style="padding: 10px;">
+                    <a class="call_to-btn btn_white-border" href="/sign-in" style="width: 230px; text-align: center">
+                        Sign In / Sign Up
+                    </a>
+                </div>
+                <div class="column" style="padding: 10px">
+                    <a class="call_to-btn btn_white-border" href="/guest" style="width: 230px; text-align: center">
+                        Continue as Guest
+                    </a>
+                </div>
+                
+              </div>
+            
+            
+          </div>
+        </div>
+        <div class="hero_img-container" style="height: 300px">
+          <div style="padding-right: 30px">
+            <picture>
+              <img src="{{ url_for('static', filename='images/safety.png') }}" style="height: 400px; width: auto" type="image/png" alt="Header" class="img-fluid">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+<!-- end header section -->
+
+
+  <div class="common_style">
+    
+
+    <!-- section one -->
+    <section class="about_section">
+      <div class="container" style="text-align: left;">
+        <div style="text-align: center; padding: 50px"><h1><b>How it works?</b></h1></div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="about_img-container">
+              <picture>
+                <img src="{{ url_for('static', filename='images/articles.jpg') }}" type="image/png" alt="MindHug Community" class="img-fluid">
+              </picture>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about_detail-box">
+              <h3>
+                Analyze news articles, lots of 'em
+              </h3>
+              <p>
+                We are always analyzing more and more news articles,extracting important details like the locations involved and info about the victims, using our AI based technology so that our information about a locality is always up to date.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section two -->
+    <section class="admission_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="admission_detail-box">
+              <h3>
+                So that you stay safe
+              </h3>
+              <p>
+                You can enter your details along with the locality you are interested in and our sytem showcases all previous crimes for that area, along with crimes occuring most frequently tageting people of your age group. All this, so that you make an informed decision.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="admission_img-container">
+              <picture>
+                <img src="{{ url_for('static', filename='images/safe.png') }}" type="image/png" alt="MindHug Engage" class="img-fluid">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section three -->
+    <section class="why_section">
+      <div class="container" style="text-align: left">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="why_img-container">
+              <picture>
+                <img src="{{ url_for('static', filename='images/things.jpg') }}" type="image/png" alt="MindHug Events" class="img-fluid">
+              </picture>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="why_detail-box">
+              <h3>
+                All the things you need, in one place
+              </h3>
+              <p>
+                Safety is the most important consideration when selecting a neighborhood, but it's not the only one. We understand that. That's why now you can see amenities like parks, schools, hospitals and restaurants for an area. All the things you need in one place. We are also in the process of adding property pricing trends for localities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  </section>
+
+  </div>
+
+{% endblock %}
