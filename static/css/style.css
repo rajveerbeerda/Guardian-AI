@@ -117,7 +117,6 @@ sup {
 }
 
 .hero_section {
-  background-image: url("../images/hero.jpg");
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -238,7 +237,6 @@ a:focus {
 }
 
 .custom_nav-container .nav_search-btn {
-  background-image: url(../images/search-icon.png);
   background-size: 22px;
   background-repeat: no-repeat;
   background-position-y: 7px;
@@ -269,7 +267,6 @@ a:focus {
 }
 
 .custom_nav-container .navbar-toggler .navbar-toggler-icon {
-  background-image: url('../images/menu.svg');
   background-size: 40px;
 }
 /*end header section*/
@@ -920,12 +917,4 @@ a:focus {
   color: #fdfdfe;
 }
 
-.wpcc-btn {
-  border-radius: 5px;
-  outline: none !important;
-}
-
-.wpcc-container {
-  box-shadow: 0 0 10px rgba(0,0,0,.4);
-}
 /* end footer section*/
