@@ -1,14 +1,19 @@
 from flask import Flask, request, jsonify, render_template, make_response, redirect, url_for, flash, sessions, session, get_flashed_messages
-
+from firebase_config import firebaseConfig
 import variables.guest_details as gd
 import variables.other as ov
 from get_details import *
 
+import pyrebase
 import pandas as pd
 
 app = Flask(__name__)
 
 app.secret_key = "abcdefgh"
+
+firebase=pyrebase.initialize_app(firebaseConfig)
+auth=firebase.auth()
+
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -19,7 +24,9 @@ def signIn():
     if request.method=="POST":
         email = request.form['email']
         password = request.form['password']
+        logIn=auth.sign_in_with_email_and_password(email,password)
         print(email, password)
+
     return render_template('signin.html')
 
 @app.route('/sign-up', methods=["GET", "POST"])
@@ -28,6 +35,7 @@ def signUp():
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
+        user = auth.create_user_with_email_and_password(email,password)
         print(name, email, password)
     return render_template('signup.html')
 
