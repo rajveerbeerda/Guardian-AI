@@ -94,9 +94,7 @@ def updateData():
     while dateutil.parser.parse(from_date).date() < dateutil.parser.parse(e).date():
         if dateutil.parser.parse(to_date).date() > dateutil.parser.parse(e).date():
             to_date = e
-        print(from_date, 'to', to_date)
         for crime in crimes.keys():
-            print(40 * '*', crime, 40 * '*')
             opts = {
                 'title': crime,
                 'sort_by': 'social_shares_count.facebook',
@@ -120,10 +118,6 @@ def updateData():
                 crimes[crime] += 1
         from_date = str((datetime.datetime.strptime(str(to_date), "%Y-%m-%d") + datetime.timedelta(days=1)).date())
         to_date = str((datetime.datetime.strptime(str(from_date), "%Y-%m-%d") + datetime.timedelta(days=5)).date())
-
-    print('\nTotal News Imported :', total_news_count)
-    for crime in crimes.keys():
-        print(crime, ':', crimes[crime])
 
     with open('data/aylien_news.csv', 'a') as f:
         writer = csv.writer(f)
@@ -174,17 +168,6 @@ def updateData():
             urls = lst[8].split("\t")
             d[location] = [dates, headlines, types, articles, ages, businessmans, urls, srcs]
 
-        for i in all_locations:
-            for j in loc:
-                if i == j.lower() or i == j:
-                    loc_name = j
-                    break
-            t = d.get(loc_name, 0)
-            if t == 0:
-                print(i, t)
-            else:
-                print(i, len(t[0]))
-
         business = ['businessman', 'jeweller', 'jeweler', 'shop owner', 'property dealer']
         c = 0
         for i in range(len(rows)):
@@ -233,14 +216,6 @@ def updateData():
         for i in crime_counts.keys():
             p = 100 - int((crime_counts[i] / max_count) * 100)
             percentile[i] = p
-
-        for i in all_locations:
-            for j in loc:
-                if i == j.lower() or i == j:
-                    loc_name = j
-                    break
-            t = crime_counts.get(loc_name, 0)
-            print(i, t)
 
         rows = []
         header = ['location', 'date', 'source', 'headline', 'crime_type', 'article', 'age', 'businessman', 'url',
