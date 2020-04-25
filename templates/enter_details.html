@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block metatags %}
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+{% endblock %}
+
+{% block title %}Guest{% endblock %}
+
+{% block body %}
+
+{% include 'includes/_navbar.html' %}
+
+<div class="section" style="padding-top: 100px;">
+    <div class="container" style="border-radius: 10px; padding-top: 40px">
+        <div class="row">
+            <div class="mcp-title-area">
+                <h2>Complete your profile</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mcp-area">
+                <form id="details" method="post">
+                    <input size="100" placeholder="Your age" type="tel" tabindex="1" id="age" name="age" oninvalid="this.setCustomValidity('Please enter your age')" oninput="this.setCustomValidity('')" required autofocus>
+                    <select style="width: 100%; height: 40px; margin-bottom: 20px; padding: 0 15px; border: 1px solid #ccc;" class="form-control m-b-24" id="gender" name="gender" oninvalid="this.setCustomValidity('Please select your gender')" oninput="this.setCustomValidity('')" required>
+                        <option value="">Select your Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <select style="width: 100%; height: 40px; margin-bottom: 20px; padding: 0 15px; border: 1px solid #ccc;" class="form-control m-b-24" id="businessman" name="businessman" oninvalid="this.setCustomValidity('Please select an item in the list')" oninput="this.setCustomValidity('')" required>
+                        <option value="">Are you a Businessman?</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <button name="submit" type="submit" id="submit" tabindex="5">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -22,6 +22,7 @@
                 <form id="sign-in" method="post">
                         <input size="62" placeholder="Email address" type="email" tabindex="1" id="email" name="email" oninvalid="this.setCustomValidity('Please enter a valid email address')" oninput="this.setCustomValidity('')" required autofocus>
                         <input placeholder="Password" type="password" tabindex="1" id="password" name="password" oninvalid="this.setCustomValidity('Please enter your password')" required>
+                    <p style="color: red; text-align: left; font-size: 0.80em">{{ message }}</p>
                         <!-- <label class="mindhug_validation">
                             <input type="checkbox" class="mindhug-checkmark" id="field_terms" oninvalid="this.setCustomValidity('Please check the box to continue')" oninput="this.setCustomValidity('')" required/>
                             <span class="mindhug-checkmark"></span>
@@ -30,6 +31,7 @@
                         <button name="submit" type="submit" id="submit" tabindex="5">Submit</button>
                 </form>
                 <p class="description" style="padding-top: 10px;">Don't have an account? <a href="sign-up">Click here</a></p>
+
             </div>
         </div>
     </div>

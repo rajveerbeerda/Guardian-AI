@@ -12,7 +12,7 @@ html {
 body {
   font-family: 'Exo', sans-serif;
   font-size: 1rem;
-  background-color: #fefeff;
+  background-color: whitesmoke;
 }
 
 sup {
@@ -117,6 +117,7 @@ sup {
 }
 
 .hero_section {
+  background-image: url("../images/hero.jpg");
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -124,9 +125,10 @@ sup {
 }
 
 .hero_section .call_to-btn {
-  background-color: #34bbae;
+  background-color: black;
   color: #ffffff;
   outline: none;
+    border-radius: 3px;
 }
 
 .call_to-btn img {
@@ -142,7 +144,7 @@ sup {
 
 .call_to-btn:hover,
 .btn_on-hover:hover {
-  background-color: #3cd6c7;
+  background-color: #474747;
   color: #ffffff;
   outline: none;
 }
@@ -237,6 +239,7 @@ a:focus {
 }
 
 .custom_nav-container .nav_search-btn {
+  background-image: url(../images/search-icon.png);
   background-size: 22px;
   background-repeat: no-repeat;
   background-position-y: 7px;
@@ -267,6 +270,7 @@ a:focus {
 }
 
 .custom_nav-container .navbar-toggler .navbar-toggler-icon {
+  background-image: url('../images/menu.svg');
   background-size: 40px;
 }
 /*end header section*/
@@ -274,16 +278,16 @@ a:focus {
 /* hero section */
 .hero-container {
   display: flex;
-  padding-top: 150px;
+  padding-top: 100px;
   padding-bottom: 100px;
 }
 
 .hero_detail-box {
-  width: 50%;
+  width: 70%;
 }
 
 .hero_img-container {
-  width: 60%;
+  width: 50%;
   margin-left: 5%;
 }
 
@@ -296,9 +300,9 @@ a:focus {
 }
 
 .hero_detail-box h1 {
-  font-size: 50px;
-  color: #304351;
-  font-weight: 600;
+  font-size: 45px;
+  color: black;
+  font-weight: 500;
   width: 100%;
 }
 
@@ -587,6 +591,7 @@ a:focus {
     padding: 0 15px;
     border-radius: 3px;
     border: 1px solid #ccc;
+    background: white;
 }
 
 .section .mcp-area textarea {
@@ -607,7 +612,7 @@ a:focus {
 }
 
 .section .mcp-area button {
-    background-color: #34bbae;
+    background-color: black;
     border: none;
     outline: none;
     color: #ffffff;
@@ -620,7 +625,7 @@ a:focus {
 }
 
 .section .mcp-area button:hover {
-    background-color: #3cd6c7;
+    background-color: #474747;
     color: #ffffff;
 }
 

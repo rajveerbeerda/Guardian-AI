@@ -205,9 +205,11 @@
 
 <div class="section" style="padding-top: 100px;">
     <div class="container" style="padding-top: 40px; padding-bottom: 50px">
-        <div class="container-fluid" style="padding: 50px;border: 2px solid gray; border-radius: 10px">
+        <div class="container-fluid" style="padding: 30px;border: 2px solid gray; border-radius: 10px">
+
+    <div><h2><b>Safer areas nearby {{ src_loc }}:</b></h2></div>
             <div class="row" style="padding: 50px;  ">
-                <div><h2><b>Safer areas nearby {{ src_loc }} :</b></h2></div>
+
                 {% if safe_areas_lst==[] %}
                     <h4>No safer areas nearby than your selected location.</h4>
                 {% endif %}
@@ -218,7 +220,7 @@
                     {% for i in range(0, l) %}
                     <div class="col-lg-3" style="text-align: center">
                         <p>
-                            <a href="{{ url_for('crimeDetails', city_name=safe_areas_lst[i], age=0, gender=0, businessman=0) }}">
+                            <a href="{{ url_for('crimeDetails', city_name=safe_areas_lst[i], age=age, gender=gender, businessman=businessman) }}">
                                 <h5>{{ safe_areas_lst[i] }}</h5>
                                 <div class="set-size charts-container" style="display: inline-block; justify-content: center;">
                                     <div class="pie-wrapper pie-wrapper--solid progress-{{ crime_area[i] }} style-2">

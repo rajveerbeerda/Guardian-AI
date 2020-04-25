@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block metatags %}
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+{% endblock %}
+
+{% block title %}Select Location{% endblock %}
+
+{% block body %}
+
+{% include 'includes/_navbar.html' %}
+
+<div class="section" style="padding-top: 100px;">
+    <div class="container" style="border-radius: 10px; padding-top: 40px">
+    {% if name!="name" %}
+        <h2><font size="5.00em">Hi {{ name }} </font></h2>
+    {% endif %}
+        <div class="row">
+            <div class="mcp-title-area">
+                <h3>Select your preferred location</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mcp-area">
+                <form id="details" method="post">
+                    <select style="width: 100%; height: 40px; margin-bottom: 20px; padding: 0 15px; border-radius: 0px; border: 1px solid #ccc;" class="form-control m-b-24" id="location" name="location" oninvalid="this.setCustomValidity('Please select the location')" oninput="this.setCustomValidity('')" required>
+                        <option value="">Select Location</option>
+                        {% for loc in locations %}
+                            <option value="{{ loc }}">{{ loc }}</option>
+                        {% endfor %}
+                    </select>
+                    <button name="submit" type="submit" id="submit" tabindex="5">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
