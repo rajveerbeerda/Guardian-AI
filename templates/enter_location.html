@@ -12,9 +12,10 @@
 
 <div class="section" style="padding-top: 100px;">
     <div class="container" style="border-radius: 10px; padding-top: 40px">
+    {% if name!="name" %}
         <h2><font size="5.00em">Hi {{ name }} </font></h2>
+    {% endif %}
         <div class="row">
-
             <div class="mcp-title-area">
                 <h3>Select your preferred location</h3>
             </div>

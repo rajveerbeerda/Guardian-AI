@@ -38,6 +38,8 @@ def signIn():
 def enterLocation(email):
     locations = getAllLocations()
     data = getDetails(email)
+    if data[0]==-1:
+        return redirect(url_for('enterDetails', email=email, name="name"))
     name = data[1]
     age = data[2]
     gender = data[3]
