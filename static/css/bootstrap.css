@@ -6587,12 +6587,27 @@ button.bg-dark:focus {
   background-color: #1d2124 !important;
 }
 
+.bg-black {
+  background-color: black !important;
+}
+
+a.bg-black:hover, a.bg-black:focus,
+button.bg-black:hover,
+button.bg-black:focus {
+  background-color: white !important;
+}
+
 .bg-white {
   background-color: #fff !important;
 }
 
 .bg-transparent {
   background-color: transparent !important;
+}
+
+.bg-dark-transparent {
+  background-color: black !important;
+  opacity: 50%;
 }
 
 .border {

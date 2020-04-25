@@ -3,35 +3,78 @@ from flask import Flask, request, jsonify, render_template, make_response, redir
 import variables.guest_details as gd
 import variables.other as ov
 from get_details import *
+from user_details import *
 from update_news import updateData
+from firebase_config import firebaseConfig
 
 import pandas as pd
+import pyrebase
 
 app = Flask(__name__)
-
 app.secret_key = "abcdefgh"
+
+firebase = pyrebase.initialize_app(firebaseConfig)
+auth = firebase.auth()
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-#     updateData()
+    # updateData()
     return render_template('index.html')
 
 @app.route('/sign-in', methods=["GET", "POST"])
 def signIn():
+    message = ""
     if request.method=="POST":
-        email = request.form['email']
+        email = str(request.form['email']).lower()
         password = request.form['password']
-        print(email, password)
-    return render_template('signin.html')
+        try:
+            logIn = auth.sign_in_with_email_and_password(email, password)
+            return redirect(url_for('enterLocation', email=email))
+        except Exception as e:
+            message = "* Incorrect Email ID or Password"
+    return render_template('signin.html', message=message)
+
+@app.route('/enter-location&<email>', methods=["GET", "POST"])
+def enterLocation(email):
+    locations = getAllLocations()
+    data = getDetails(email)
+    name = data[1]
+    age = data[2]
+    gender = data[3]
+    businessman = data[4]
+    if request.method=="POST":
+        location = request.form["location"]
+        return redirect(
+            url_for('crimeDetails', city_name=location, age=age, gender=gender, businessman=businessman))
+    return render_template('enter_location.html', name=name, locations=locations)
 
 @app.route('/sign-up', methods=["GET", "POST"])
 def signUp():
+    message = ""
     if request.method=="POST":
         name = request.form['name']
-        email = request.form['email']
+        email = str(request.form['email']).lower()
         password = request.form['password']
-        print(name, email, password)
-    return render_template('signup.html')
+        password1 = request.form['password1']
+        if password==password1:
+            try:
+                user = auth.create_user_with_email_and_password(email, password)
+                return redirect(url_for('enterDetails', email=email, name=name))
+            except Exception as e:
+                message = "* You are already registered. Please Sign-In to continue."
+        else:
+            message = "* Password doesn't match"
+    return render_template('signup.html', message=message)
+
+@app.route('/enter-details+name=<name>&email=<email>', methods=["GET", "POST"])
+def enterDetails(email, name):
+    if request.method=="POST":
+        age = request.form["age"]
+        gender = request.form["gender"]
+        businessman = request.form["businessman"]
+        saveDetails(name, email, age, gender, businessman)
+        return redirect(url_for('index'))
+    return render_template('enter_details.html')
 
 @app.route('/guest', methods=["GET", "POST"])
 def guest():
@@ -44,7 +87,7 @@ def guest():
         return redirect(url_for('crimeDetails', city_name=gd.location, age = gd.age, gender=gd.gender, businessman=gd.businessman))
     return render_template('guest.html', locations = locations)
 
-@app.route('/crime-details/area=<city_name>&age=<age>&gender=<gender>&businessman=<businessman>', methods=['GET', 'POST'])
+@app.route('/crime-details&area=<city_name>&age=<age>&gender=<gender>&businessman=<businessman>', methods=['GET', 'POST'])
 def crimeDetails(city_name, age, gender, businessman):
     location = city_name
     df = pd.read_csv('data/area.csv')
@@ -112,7 +155,7 @@ def crimeDetails(city_name, age, gender, businessman):
                             most_occ_crime=most_occ_crime, s=s, si=si,
                             school_r=school_r, restaurant_r=restaurant_r, park_r=park_r, hospital_r=hospital_r)
 
-@app.route('/safe-areas/area=<city_name>&distance=<distance>&age=<age>&gender=<gender>&businessman=<businessman>', methods=['GET', 'POST'])
+@app.route('/safe-areas&area=<city_name>&distance=<distance>&age=<age>&gender=<gender>&businessman=<businessman>', methods=['GET', 'POST'])
 def safeAreas(city_name, distance, age, gender, businessman):
     src_loc = city_name
     dist = float(distance)
