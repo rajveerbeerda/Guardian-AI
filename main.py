@@ -18,7 +18,7 @@ auth = firebase.auth()
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-    # updateData()
+    updateData()
     return render_template('index.html')
 
 @app.route('/sign-in', methods=["GET", "POST"])
