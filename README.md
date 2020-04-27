@@ -1,5 +1,5 @@
-# Home-Buying
-
+# Guardian AI Live Website: https://guardian-ai-1.df.r.appspot.com/
+## Please follow the steps given below to setup the project locally, visit the link given above to view the live version.
 ### Development
 
 - Clone the repository to your local.
@@ -12,7 +12,7 @@ git clone https://github.com/rajveerbeerda/Home-Buying.git
 sudo pip3 install virtualenv
 ```
 
-- Go to your Project directory and create virtualenv with python 3.
+- Navigate to your project directory and create virtualenv with python 3.
 ```bash
 cd ~/Home-Buying && virtualenv venv -p python3
 ```
