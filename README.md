@@ -4,7 +4,7 @@
 
 - Clone the repository to your local.
 ```bash
-git clone https://github.com/rajveerbeerda/Home-Buying.git
+https://github.com/rajveerbeerda/Guardian-AI.git
 ```
 
 - Install virtualEnv so you can isolate Python environments.
@@ -14,13 +14,13 @@ sudo pip3 install virtualenv
 
 - Navigate to your project directory and create virtualenv with python 3.
 ```bash
-cd ~/Home-Buying && virtualenv venv -p python3
+cd Guardian-AI && python3 -m venv env
 ```
 
 - Activate virtualenv.
 ```bash
 # Activate
-source venv/bin/activate
+source env/bin/activate
 
 # Exit venv with the following command
 deactivate
@@ -28,10 +28,10 @@ deactivate
 
 - Install requirements for the application.
 ```bash
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 
 - Run the application.
 ```bash
-python3 app.py
+python3 main.py
 ```
